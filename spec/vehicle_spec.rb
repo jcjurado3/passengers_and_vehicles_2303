@@ -14,7 +14,7 @@ RSpec.describe Vehicle do
 
       expect(vehicle.year).to eq("2001")
       expect(vehicle.make).to eq("Honda")
-      expect(vehicle.model.to eq("Civic")
+      expect(vehicle.model).to eq("Civic")
 
     end
   end
