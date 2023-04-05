@@ -18,5 +18,14 @@ class Park
       end
     end
   end
-   
+
+  def all_attendees
+    name_array = @passengers.each do |passenger|
+      passenger.find_all do |passenger_name|
+        require 'pry'; binding.pry
+        passenger.name
+      end
+    end
+    name_array
+  end
 end

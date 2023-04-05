@@ -64,8 +64,38 @@ RSpec.describe Park do
       vehicle.add_passenger(taylor)
 
       park.add_vehicle(vehicle)
-require 'pry'; binding.pry
       expect(park.revenue).to eq(50)
+    end
+  end
+  describe '#iteration-4 attempt' do
+    it 'can generate list of all attendees' do
+      park = Park.new("Yosemite National Park", 25)
+
+      vehicle1 = Vehicle.new("2001", "Honda", "Civic")
+
+      charlie = Passenger.new({"name" => "Charlie", "age" => 18})
+      jude = Passenger.new({"name" => "Jude", "age" => 20})
+      taylor = Passenger.new({"name" => "Taylor", "age" => 12})  
+
+      vehicle1.add_passenger(charlie)
+      vehicle1.add_passenger(jude)
+      vehicle1.add_passenger(taylor)
+
+      park.add_vehicle(vehicle1)
+
+      vehicle2 = Vehicle.new("2001", "Honda", "Civic")
+
+      james = Passenger.new({"name" => "James", "age" => 28})
+      john = Passenger.new({"name" => "John", "age" => 16})
+      justin = Passenger.new({"name" => "Justin", "age" => 5})  
+
+      vehicle2.add_passenger(james)
+      vehicle2.add_passenger(john)
+      vehicle2.add_passenger(justin)
+
+      park.add_vehicle(vehicle2)
+
+      expect(park.all_attendees).to eq(["Charlie", "Jude", "Taylor", "James", "John", "Justin"])
     end
   end
 end
