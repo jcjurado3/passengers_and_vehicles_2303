@@ -22,12 +22,12 @@ RSpec.describe Park do
     it 'can check for vehicles in park' do
       park = Park.new("Yosemite National Park", 25)
 
-      expect(park.vehicles_in_park).to eq([])
+      expect(park.vehicles).to eq([])
     end
     it 'can add vehicles that entered the park' do
       park = Park.new("Yosemite National Park", 25)
 
-      expect(park.vehicles_in_park).to eq([])
+      expect(park.vehicles).to eq([])
 
       vehicle = Vehicle.new("2001", "Honda", "Civic")
       vehicle2 = Vehicle.new("2008", "Nissan", "Altima")
@@ -35,8 +35,37 @@ RSpec.describe Park do
       park.add_vehicle(vehicle)
       park.add_vehicle(vehicle2)
 
-      expect(park.vehicles_in_park).to eq([vehicle, vehicle2])
+      expect(park.vehicles).to eq([vehicle, vehicle2])
+    end
+    it 'can check for passengers in vehicle' do
+      park = Park.new("Yosemite National Park", 25)
+      vehicle = Vehicle.new("2001", "Honda", "Civic")
+      charlie = Passenger.new({"name" => "Charlie", "age" => 18})
+      taylor = Passenger.new({"name" => "Taylor", "age" => 12})  
 
+      vehicle.add_passenger(charlie)
+      vehicle.add_passenger(taylor)
+
+      park.add_vehicle(vehicle)
+
+      expect(park.passengers).to eq([[charlie, taylor]])
+    end
+  end
+  describe '#revenue' do
+    it 'can calculate revenue' do
+      park = Park.new("Yosemite National Park", 25)
+      vehicle = Vehicle.new("2001", "Honda", "Civic")
+      charlie = Passenger.new({"name" => "Charlie", "age" => 18})
+      jude = Passenger.new({"name" => "Jude", "age" => 20})
+      taylor = Passenger.new({"name" => "Taylor", "age" => 12})  
+
+      vehicle.add_passenger(charlie)
+      vehicle.add_passenger(jude)
+      vehicle.add_passenger(taylor)
+
+      park.add_vehicle(vehicle)
+require 'pry'; binding.pry
+      expect(park.revenue).to eq(50)
     end
   end
 end
