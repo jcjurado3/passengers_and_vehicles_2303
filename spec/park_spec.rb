@@ -18,4 +18,25 @@ RSpec.describe Park do
 
     end
   end
+  describe '#vehicles_in_park' do
+    it 'can check for vehicles in park' do
+      park = Park.new("Yosemite National Park", 25)
+
+      expect(park.vehicles_in_park).to eq([])
+    end
+    it 'can add vehicles that entered the park' do
+      park = Park.new("Yosemite National Park", 25)
+
+      expect(park.vehicles_in_park).to eq([])
+
+      vehicle = Vehicle.new("2001", "Honda", "Civic")
+      vehicle2 = Vehicle.new("2008", "Nissan", "Altima")
+      
+      park.add_vehicle(vehicle)
+      park.add_vehicle(vehicle2)
+
+      expect(park.vehicles_in_park).to eq([vehicle, vehicle2])
+
+    end
+  end
 end
