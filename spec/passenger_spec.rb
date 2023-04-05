@@ -19,5 +19,15 @@ RSpec.describe Passenger do
       expect(charlie.age).to eq(18)
     end
   end
+  describe '#adult?' do
+    it 'has adult method' do
+      charlie = Passenger.new({"name" => "Charlie", "age" => 18})
+      taylor = Passenger.new({"name" => "Taylor", "age" => 12})  
+
+      expect(charlie.adult?).to be(true)
+      expect(taylor.adult?).to be(false)
+
+    end
+  end
 
 end
