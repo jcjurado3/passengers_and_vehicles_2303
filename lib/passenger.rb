@@ -2,10 +2,9 @@ class Passenger
 
   attr_reader :name, :age, :adult, :driver
 
-  def initialize(player_info)
-    @name = player_info["name"]
-    @age = player_info["age"]
-    @adult = adult
+  def initialize(passenger_details)
+    @name = passenger_details["name"]
+    @age = passenger_details["age"]
     @driver = false
   end
 
